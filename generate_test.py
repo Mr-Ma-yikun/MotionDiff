@@ -77,7 +77,7 @@ def dilate_object(image, kernel_size=3, max_scale=1.12):
 device = torch.device('cuda:0')
 device2 = torch.device('cuda:1')
 
-#-----------------------------------------------------------使用SD的推理ppl
+#-----------------------------------------------------------SD infer pipe
 from diffusers import StableDiffusionPipeline
 from transformers import CLIPTextModel, CLIPTokenizer, logging
 
@@ -111,19 +111,18 @@ def extract_latents(s):
 
 def extract_flows(s):  
     parts = s.split('/')
-    filename = parts[-1]  # 获取文件名部分，例如 'flow480.pth'  
-    number_str = filename.split('flow')[1].split('.pth')[0]  # 提取序号部分，例如 '480'  
-    return int(number_str)  # 将序号转换为整数
+    filename = parts[-1]  # 'flow480.pth'  
+    number_str = filename.split('flow')[1].split('.pth')[0]   
+    return int(number_str)  
 
 def extract_masks(s):  
     parts = s.split('/')
-    filename = parts[-1]  # 获取文件名部分，例如 'flow480.pth'  
-    number_str = filename.split('mask')[1].split('.pth')[0]  # 提取序号部分，例如 '480'  
-    return int(number_str)  # 将序号转换为整数
+    filename = parts[-1]  
+    number_str = filename.split('mask')[1].split('.pth')[0]   
+    return int(number_str)  
 
 def main():
 
-    #-----------------------------------------------加载参数
     parser = argparse.ArgumentParser()
     # Generation args
     parser.add_argument("--save_dir", required=True, help='Path to save results')
@@ -188,8 +187,6 @@ def main():
         src_img = src_img.to(device)
         src_imgs.append(src_img)  
 
-    # -----------------------------------------------读取多视角光流
-
     flows_path = input_dir / 'flows' 
     flow_pth_files = glob.glob(f'{flows_path}/flow*.pth')  
     sorted_flows = sorted(flow_pth_files, key=extract_flows)  
@@ -241,7 +238,6 @@ def main():
         warp_imgs_kuo.append(warp_img_kuo) 
         
         warp_id = warp_id + 1 
-    # -----------------------------------------------读取存储的latents
 
     #所有latents的文件夹，latents_1,2,3,...
     latent_paths = find_folders_with_prefix(input_dir, 'latents_') 
@@ -264,8 +260,6 @@ def main():
     #(x, 500, 4, 64, 64)
     #[[1,2,..500], [1,2,..500], [1,2,..500]]
     cached_latents = torch.stack(all_latents, dim=0)
-
-    #------------------------------加载prompt
 
     text_input = tokenizer([""], padding="max_length", max_length=tokenizer.model_max_length, truncation=True, return_tensors="pt")
     with torch.no_grad():
