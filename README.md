@@ -1,21 +1,15 @@
 # MotionDiff: Training-free Zero-shot Interactive Motion Editing via Flow-assisted Multi-view Diffusion (ICCV-25)
 
 
-
 ![res](dataset/res.png "res")
-
-
 
 ## Introduction
 
 This repository contains the official PyTorch implementation for the **ICCV 2025** paper titled "MotionDiff: Training-free Zero-shot Interactive Motion Editing via Flow-assisted Multi-view Diffusion" by Yikun Ma, Yiqing Li, Jiawei Wu, Xing Luo and Zhi Jin.
 
-
-
 ## Abstract
 
 Generative models have made remarkable advancements and are capable of producing high-quality content. However, performing controllable editing with generative models remains challenging, due to their inherent uncertainty in outputs. This challenge is praticularly pronounced in motion editing, which involves the processing of spatial information. While some physics-based generative methods have attempted to implement motion editing, they typically operate on single-view images with simple motions, such as translation and dragging. These methods struggle to handle complex rotation and stretching motions and ensure multi-view consistency, often necessitating resource-intensive retraining. To address these challenges, we propose MotionDiff, a training-free zero-shot diffusion method that leverages optical flow for complex multi-view motion editing. Specifically, given a static scene, users can interactively select objects of interest to add motion priors. The proposed Point Kinematic Model (PKM) then estimates corresponding multi-view optical flows during the Multi-view Flow Estimation Stage (MFES). Subsequently, these optical flows are utilized to generate multi-view motion results through decoupled motion representation in the Multi-view Motion Diffusion Stage (MMDS). Extensive experiments demonstrate that MotionDiff outperforms other physics-based generative motion editing methods in achieving high-quality multi-view consistent motion results. Notably, MotionDiff does not require retraining, enabling users to conveniently adapt it for various down-stream tasks.
-
 
 
 ## Installation
@@ -25,10 +19,8 @@ Generative models have made remarkable advancements and are capable of producing
 2. We use SD-1.5 as the baseline diffusion model https://huggingface.co/stable-diffusion-v1-5/stable-diffusion-v1-5
 
    
-
 ## Demo
-Down the demo data from: https://pan.baidu.com/s/1bLLbHqb3o5ysXsic5Pnd7w?pwd=8888 
-pass: 8888 
+Down the demo data from https://pan.baidu.com/s/1bLLbHqb3o5ysXsic5Pnd7w?pwd=8888, and put it into data/
 
 You can run the following code to quickly reproduce our results. 
 
@@ -37,7 +29,6 @@ python ./generate_test.py --prompt "" --input_dir ./data/08_lashen --save_dir re
 ```
 
 To balance better editing results and faster editing speed, you can manually adjust parameters such as those of DDIM steps and the gradient intensity.
-
 
 
 ## Full Running
