@@ -20,9 +20,9 @@ Generative models have made remarkable advancements and are capable of producing
 
    
 ## Demo
-Down the demo data from https://pan.baidu.com/s/1bLLbHqb3o5ysXsic5Pnd7w?pwd=8888, and put it into data/
+Download our demo data from https://pan.baidu.com/s/1bLLbHqb3o5ysXsic5Pnd7w?pwd=8888, and put it into data/
 
-You can run the following code to quickly reproduce our results. 
+Run the following code to quickly reproduce our results. 
 
 ```
 python ./generate_test.py --prompt "" --input_dir ./data/08_lashen --save_dir results/08_lashen --log_freq 25 --batch_size_num 4
@@ -35,7 +35,7 @@ To balance better editing results and faster editing speed, you can manually adj
 
 ### 1. Segmentation
 
-First, segment a 3D scene using Mask Clustering, more details please refer to the original code https://github.com/PKU-EPIC/MaskClustering.  We use the Scannet dataset.
+First, segment a 3D scene using Mask Clustering, more details please refer to the original code https://github.com/PKU-EPIC/MaskClustering. 
 
 ```
 cd MC/
@@ -50,10 +50,11 @@ python -m http.server 6008
 # Open in browser for vis      
 http://localhost:6008
 ```
+After that, you can choose the 3d object id of interest. 
 
 ### 2. Using GUI
 
-Then, obtain the single-view optical flow and the warp image from GUI. 
+Directly obtain the single-view optical flow and the warp image from GUI. 
 
 Among them, we use the SAM https://github.com/facebookresearch/segment-anything, and you need to download the corresponding weights. 
 
@@ -92,8 +93,6 @@ Finally, you can run the python code of demo to obtain multi-view editing result
 ```
 python ./generate_test.py --prompt "" --input_dir ./data/your_data --save_dir results/your_save_dir --log_freq 25 --batch_size_num 4
 ```
-
-
 
 # Acknowledgement
 
