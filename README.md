@@ -2,7 +2,7 @@
 
 
 
-![res](https://github.com/Mr-Ma-yikun/MotionDiff/tree/master/dataset/res.png "res")
+![res](dataset/res.png "res")
 
 
 
