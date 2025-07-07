@@ -87,7 +87,7 @@ python DDIMins/preprocess.py --data_path /path/img --save_dir /path/latents_x --
 
 ### 5. Get results
 
-Finalle, you can run the python code of demo to obtain multi-view editing results.
+Finally, you can run the python code of demo to obtain multi-view editing results.
 
 ```
 python ./generate_test.py --prompt "" --input_dir ./data/your_data --save_dir results/your_save_dir --log_freq 25 --batch_size_num 4
