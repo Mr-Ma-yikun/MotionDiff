@@ -2,7 +2,7 @@
 
 
 
-![res](D:\中山大学\项目汇报\ICCV\res.png)
+![res](https://github.com/Mr-Ma-yikun/MotionDiff/tree/master/dataset)
 
 
 
