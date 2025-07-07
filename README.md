@@ -27,6 +27,8 @@ Generative models have made remarkable advancements and are capable of producing
    
 
 ## Demo
+Down the demo data from: https://pan.baidu.com/s/1bLLbHqb3o5ysXsic5Pnd7w?pwd=8888 
+pass: 8888 
 
 You can run the following code to quickly reproduce our results. 
 
